@@ -11,8 +11,7 @@ ms.author: dansimp
 ms.topic: article
 ms.prod: w10
 ms.technology: windows
-author: manikadhiman
-ms.date: 11/15/2017
+author: dansimp
 ---
 
 # MDM enrollment of Windows 10-based devices
@@ -169,10 +168,10 @@ There are a few instances where your device cannot be connected to an Azure AD d
 
  
 
-## Connect personally-owned devices 
+## Connect personally owned devices 
 
 
-Personally-owned devices, also known as bring your own device (BYOD), can be connected to a work or school account, or to MDM. Windows 10 does not require a personal Microsoft account on devices to connect to work or school.
+Personally owned devices, also known as bring your own device (BYOD), can be connected to a work or school account, or to MDM. Windows 10 does not require a personal Microsoft account on devices to connect to work or school.
 
 ### Connect to a work or school account
 
@@ -248,34 +247,7 @@ To create a local account and connect the device:
 
    After you complete the flow, your device will be connected to your organization’s MDM.
    
-
-### Connect to MDM on a phone (enroll in device management)
-
-1.  Launch the Settings app, and then select **Accounts**.
-
-    ![phone settings](images/unifiedenrollment-rs1-38.png)
-
-2.  Select **Access work or school**.
-
-    ![phone settings](images/unifiedenrollment-rs1-39.png)
-
-3.  Select the **Enroll only in device management** link. This is only available in the servicing build 14393.82 (KB3176934). For older builds, see [Connect your Windows 10-based device to work using a deep link](mdm-enrollment-of-windows-devices.md#connect-your-windows-10-based-device-to-work-using-a-deep-link).
-
-    ![access work or school page](images/unifiedenrollment-rs1-40.png)
-
-4.  Enter your work email address.
-
-    ![enter your email address](images/unifiedenrollment-rs1-41.png)
-
-5.  If the device finds an endpoint that only supports on-premises authentication, this page will change and ask you for your password. If the device finds an MDM endpoint that supports federated authentication, you’ll be presented with a new window that will ask you for additional authentication information.
-
-    Based on IT policy, you may also be prompted to provide a second factor of authentication at this point.
-
-6.  After you complete the flow, your device will be connected to your organization’s MDM.
-
-    ![completed mdm enrollment](images/unifiedenrollment-rs1-42.png)
-
-### Help with connecting personally-owned devices
+### Help with connecting personally owned devices
 
 There are a few instances where your device may not be able to connect to work.
 
@@ -307,7 +279,7 @@ The deep link used for connecting your device to work will always use the follow
 | accesstoken | Custom parameter for MDM servers to use as they see fit. Typically, this can be used as a token to validate the enrollment request. Added in Windows 10, version 1703. | string |
 | deviceidentifier | Custom parameter for MDM servers to use as they see fit. Typically, this can be used to pass in a unique device identifier. Added in Windows 10, version 1703. | GUID |
 | tenantidentifier | Custom parameter for MDM servers to use as they see fit. Typically, this can be used to identify which tenant the device or user belongs to. Added in Windows 10, version 1703. | GUID or string |
-| ownership | Custom parameter for MDM servers to use as they see fit. Typically, this can be used to determine whether the device is BYOD or Corp Owned. Added in Windows 10, version 1703. | 1, 2, or 3 |
+| ownership | Custom parameter for MDM servers to use as they see fit. Typically, this can be used to determine whether the device is BYOD or Corp Owned. Added in Windows 10, version 1703. | 1, 2, or 3. Where "1" means ownership is unknown, "2" means the device is personally owned, and "3" means the device is corporate-owned |
 
 > [!NOTE]
 > AWA and AADJ values for mode are only supported on Windows 10, version 1709 and later. 

@@ -13,6 +13,7 @@ ms.author: jaimeo
 ms.localizationpriority: medium
 ms.collection: M365-analytics
 ms.topic: article
+ms.custom: seo-marvel-apr2020
 ---
 
 # Monitor Windows Updates with Update Compliance
@@ -27,7 +28,7 @@ Update Compliance enables organizations to:
 
 Update Compliance is offered through the Azure portal, and is included as part of Windows 10 licenses listed in the [prerequisites](update-compliance-get-started.md#update-compliance-prerequisites). Azure Log Analytics ingestion and retention charges are not incurred on your Azure subscription for Update Compliance data.
 
-Update Compliance uses Windows 10 diagnostic data for all of its reporting. It collects system data including update deployment progress, [Windows Update for Business](waas-manage-updates-wufb.md) configuration data, and Delivery Optimization usage data, and then sends this data to a customer-owned [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal) workspace to power the experience.
+Update Compliance uses Windows 10 diagnostic data for all of its reporting. It collects system data including update deployment progress, [Windows Update for Business](waas-manage-updates-wufb.md) configuration data, and Delivery Optimization usage data, and then sends this data to a customer-owned [Azure Log Analytics](/azure/log-analytics/query-language/get-started-analytics-portal) workspace to power the experience.
 
 See the following topics in this guide for detailed information about configuring and using the Update Compliance solution:
 

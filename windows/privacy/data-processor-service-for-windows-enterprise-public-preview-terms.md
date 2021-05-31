@@ -8,8 +8,8 @@ ms.prod: w10
 ms.topic: article
 f1.keywords:
 - NOCSH
-ms.author: daniha
-author: DaniHalfin
+ms.author: siosulli
+author: dansimp
 manager: dansimp
 audience: itpro
 ms.collection: 

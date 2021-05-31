@@ -1,13 +1,13 @@
 ---
 title: Policy CSP - System
-description: Learn policy settings that determines whether users can access the Insider build controls in the advanced options for Windows Update.
+description: Learn policy settings that determine whether users can access the Insider build controls in the advanced options for Windows Update.
 ms.author: dansimp
 ms.topic: article
 ms.prod: w10
 ms.technology: windows
 author: manikadhiman
 ms.localizationpriority: medium
-ms.date: 08/12/2020
+ms.date: 10/14/2020
 ms.reviewer: 
 manager: dansimp
 ---
@@ -141,7 +141,7 @@ manager: dansimp
 <!--/Scope-->
 <!--Description-->
 > [!NOTE]
-> This policy setting applies only to devices running Windows 10 Pro, Windows 10 Enterprise, and Windows 10 Education, Windows 10 Mobile, and Windows 10 Mobile Enterprise.
+> This policy setting applies only to devices running Windows 10 Pro, Windows 10 Enterprise, and Windows 10 Education.
 
 This policy setting determines whether users can access the Insider build controls in the Advanced Options for Windows Update. These controls are located under "Get Insider builds," and enable users to make their devices available for downloading and installing Windows preview software.
 
@@ -212,14 +212,13 @@ The following list shows the supported values:
 
 <!--/Scope-->
 <!--Description-->
-This policy setting controls whether Microsoft is a processor or controller for Windows diagnostic data collected from devices. 
+This policy setting opts the device into the Windows enterprise data pipeline. 
 
-If you enable this policy and enroll your devices in your Azure AD tenant, your organization becomes the controller and Microsoft is the processor of this data.
+If you enable this setting, data collected from the device will be opted into the Windows enterprise data pipeline.
 
-If you disable or don't configure this policy setting, Microsoft will be the controller for Windows diagnostic data collected from the device.
+If you disable or don't configure this setting, all data from the device will be collected and processed in accordance with our policies for the Windows standard data pipeline.
 
->[!Note]
-> This policy setting only controls if Microsoft is a processor for Windows diagnostic data from this device. Use the [System/AllowTelemetry](#system-allowtelemetry) policy setting to limit the diagnostic data that can be collected from the device.
+Configuring this setting does not change the telemetry collection level or the ability of the user to change the level. This setting only applies to the Windows operating system and apps included with Windows, not third-party apps or services running on Windows 10.
 
 <!--/Description-->
 <!--ADMXMapped-->
@@ -234,8 +233,8 @@ ADMX Info:
 <!--SupportedValues-->
 The following list shows the supported values:
 
--   0 (default) - Do not use the Windows Commercial Data Pipeline
--   1 - Use the Windows Commercial Data Pipeline
+-   0 (default) - Disabled.
+-   1 - Enabled.
 
 <!--/SupportedValues-->
 <!--Example-->
@@ -245,7 +244,9 @@ The following list shows the supported values:
 
 <!--/Validation-->
 <!--/Policy-->
+
 <hr/>
+
 <!--Policy-->
 <a href="" id="system-allowdevicenameindiagnosticdata"></a>**System/AllowDeviceNameInDiagnosticData**  
 
@@ -488,7 +489,7 @@ The following list shows the supported values:
 
 <!--/Scope-->
 <!--Description-->
-Added in Windows 10, version 1703. Boolean policy setting that determines whether Windows is allowed to download fonts and font catalog data from an online font provider. If you enable this setting, Windows periodically queries an online font provider to determine whether a new font catalog is available. Windows may also download font data if needed to format or render text. If you disable this policy setting, Windows does not connect to an online font provider and only enumerates locally-installed fonts.
+Added in Windows 10, version 1703. Boolean policy setting that determines whether Windows is allowed to download fonts and font catalog data from an online font provider. If you enable this setting, Windows periodically queries an online font provider to determine whether a new font catalog is available. Windows may also download font data if needed to format or render text. If you disable this policy setting, Windows does not connect to an online font provider and only enumerates locally installed fonts.
 
 This MDM setting corresponds to the EnableFontProviders Group Policy setting. If both the Group Policy and the MDM settings are configured, the group policy setting takes precedence. If neither is configured, the behavior depends on a DisableFontProviders registry value. In server editions, this registry value is set to 1 by default, so the default behavior is false (disabled). In all other editions, the registry value is not set by default, so the default behavior is true (enabled).
 
@@ -509,7 +510,7 @@ ADMX Info:
 <!--SupportedValues-->
 The following list shows the supported values:
 
--   0 - false - No traffic to fs.microsoft.com and only locally-installed fonts are available.
+-   0 - false - No traffic to fs.microsoft.com and only locally installed fonts are available.
 -   1 - true (default) - There may be network traffic to fs.microsoft.com and downloadable fonts are available to apps that support them.
 
 <!--/SupportedValues-->
@@ -705,7 +706,7 @@ The following list shows the supported values:
 <!--Description-->
 Allows the device to send diagnostic and usage telemetry data, such as Watson. 
 
-For more information about diagnostic data, including what is and what is not collected by Windows, see [Configure Windows diagnostic data in your organization](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization).
+For more information about diagnostic data, including what is and what is not collected by Windows, see [Configure Windows diagnostic data in your organization](/windows/privacy/configure-windows-diagnostic-data-in-your-organization).
 
 The following list shows the supported values for Windows 8.1:  
 -   0 - Not allowed.
@@ -735,12 +736,23 @@ The following list shows the supported values for Windows 8.1:
 </tbody>
 </table>-->
 
-In Windows 10, you can configure this policy setting to decide what level of diagnostic data to send to Microsoft. The following list shows the supported values for Windows 10:  
--   0 – (**Security**) Sends information that is required to help keep Windows more secure, including data about the Connected User Experience and Telemetry component settings, the Malicious Software Removal Tool, and Microsoft Defender. 
-    **Note:** This value is only applicable to Windows 10 Enterprise, Windows 10 Education, Windows 10 Mobile Enterprise, Windows 10 IoT Core (IoT Core), and Windows Server 2016. Using this setting on other devices is equivalent to setting the value of 1.
+In Windows 10, you can configure this policy setting to decide what level of diagnostic data to send to Microsoft.
+
+The following list shows the supported values for Windows 10 version 1809 and older:
+
+-   0 – (**Security**) Sends information that is required to help keep Windows more secure, including data about the Connected User Experience and Telemetry component settings, the Malicious Software Removal Tool, and Microsoft Defender.
+    **Note:** This value is only applicable to Windows 10 Enterprise, Windows 10 Education, Windows 10 IoT Core (IoT Core), Hololens 2, and Windows Server 2016. Using this setting on other devices is equivalent to setting the value of 1.
 -   1 – (**Basic**) Sends the same data as a value of 0, plus additional basic device info, including quality-related data, app compatibility, and app usage data.
 -   2 – (**Enhanced**) Sends the same data as a value of 1, plus additional insights, including how Windows, Windows Server, System Center, and apps are used, how they perform, and advanced reliability data.
 -   3 – (**Full**) Sends the same data as a value of 2, plus all data necessary to identify and fix problems with devices.
+
+Most restricted value is 0.
+
+The following list shows the supported values for  Windows 10 version 19H1 and later:
+
+-   **Diagnostic data off** - No Windows diagnostic data sent.
+-   **Required (Basic)** - Minimum data required to keep the device secure, up to date, and performing as expected.
+-   **Optional (Full)** - Additional data about the websites you browse, how Windows and apps are used and how they perform. This data also includes data about device activity, and enhanced error reporting that helps Microsoft to fix and improve products and services for all users.
 
 <!--<table style="margin-left: 20px">
 <colgroup>
@@ -755,7 +767,7 @@ In Windows 10, you can configure this policy setting to decide what level of dia
 <tr class="odd">
 <td style="vertical-align:top"><p>0 – Security. Information that is required to help keep Windows more secure, including data about the Connected User Experience and Telemetry component settings, the Malicious Software Removal Tool, and Windows Defender.</p>
 <div class="alert">
-<strong>Note</strong>  This value is only applicable to Windows 10 Enterprise, Windows 10 Education, Windows 10 Mobile Enterprise, Windows 10 IoT Core (IoT Core), and Windows Server 2016. Using this setting on other devices is equivalent to setting the value of 1.
+<strong>Note</strong>  This value is only applicable to Windows 10 Enterprise, Windows 10 Education, Windows 10 IoT Core (IoT Core), and Windows Server 2016. Using this setting on other devices is equivalent to setting the value of 1.
 </div>
 </td>
 </tr>
@@ -770,13 +782,6 @@ In Windows 10, you can configure this policy setting to decide what level of dia
 </tr>
 </tbody>
 </table>-->
-
-
-> [!IMPORTANT]
-> If you are using Windows 8.1 MDM server and set a value of 0 using the legacy AllowTelemetry policy on a Windows 10 Mobile device, then the value is not respected and the telemetry level is silently set to level 1.
-
-
-Most restricted value is 0.
 
 <!--/Description-->
 <!--ADMXMapped-->
@@ -1605,13 +1610,15 @@ The following list shows the supported values:
 This policy setting, in combination with the System/AllowTelemetry 
  policy setting, enables organizations to send Microsoft a specific set of diagnostic data for IT insights via Windows Analytics services. 
  
-To enable this behavior you must complete two steps:
-<ul>
-<li>Enable this policy setting</li>
-<li>Set Allow Telemetry to level 2 (Enhanced)</li>
-</ul>
+To enable this behavior, you must complete two steps:
+
+-   Enable this policy setting
+-   Set the **AllowTelemetry** level:
+    - For Windows 10 version 1809 and older: set **AllowTelemetry** to (Enhanced) 
+    - For Windows 10 version 19H1 and later: set **AllowTelemetry** to Optional (Full)
+
  
-When you configure these policy settings, a basic level of  diagnostic data plus additional events that are required for Windows Analytics are sent to Microsoft. These events are documented here: <a href="https://go.microsoft.com/fwlink/?linkid=847594" data-raw-source="[Windows 10, version 1709 enhanced telemetry events and fields used by Windows Analytics](https://go.microsoft.com/fwlink/?linkid=847594)">Windows 10, version 1709 enhanced telemetry events and fields used by Windows Analytics</a>.
+When you configure these policy settings, a basic level of  diagnostic data plus additional events that are required for Windows Analytics are sent to Microsoft. These events are documented here: <a href="/windows/privacy/enhanced-diagnostic-data-windows-analytics-events-and-fields" data-raw-source="[Windows 10, version 1709 enhanced telemetry events and fields used by Windows Analytics](/windows/privacy/enhanced-diagnostic-data-windows-analytics-events-and-fields)">Windows 10, version 1709 enhanced telemetry events and fields used by Windows Analytics</a>.
  
 Enabling enhanced diagnostic data in the System/AllowTelemetry policy in combination with not configuring this policy will also send the required events for Windows Analytics, plus additional enhanced level telemetry data. This setting has no effect on computers configured to send full, basic or security level diagnostic data to Microsoft.
    

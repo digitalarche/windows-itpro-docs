@@ -12,6 +12,7 @@ ms.date: 09/18/2018
 ms.reviewer: 
 manager: laurawi
 ms.topic: article
+ms.custom: seo-marvel-apr2020
 ---
 
 # Windows Update error codes by component
@@ -319,6 +320,7 @@ The PnP enumerated device is removed from the System Spec because one of the har
 | 0x80240042 | `WU_E_UNKNOWN_SERVICE`            | The update service is no longer registered with `AU`.
 | 0x80240043 | `WU_E_NO_UI_SUPPORT`              | There is no support for `WUA UI`.
 | 0x80240FFF | `WU_E_UNEXPECTED`                 | An operation failed due to reasons not covered by another error code.
+| 0x80070422 |                                   | Windows Update service stopped working or is not running.
 
 ## Windows Update success codes
 
